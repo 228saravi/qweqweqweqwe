@@ -1,0 +1,18 @@
+<div>
+    <dx-menu
+        #menu
+        [dataSource]="products"
+        displayExpr="name"
+        [showFirstSubmenuMode]="showFirstSubmenuModes"
+        orientation="horizontal"
+        submenuDirection="auto"
+        [hideSubmenuOnMouseLeave]="false"
+        (onItemClick)="itemClick($event)"
+    >
+    </dx-menu>
+    <div id="product-details" *ngIf="currentProduct">
+        <img src="{{currentProduct.iconSrc}}" />
+        <div class="name">{{currentProduct.name}}</div>
+        <div class="price">{{"$" + currentProduct.price}}</div>
+    </div>
+</div>

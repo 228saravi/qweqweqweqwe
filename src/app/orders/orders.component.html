@@ -1,0 +1,101 @@
+<!-- <hr> -->
+
+
+<div class="conteinerOrder">
+    <div>
+        
+        <div class="dx-field">
+            <div class="dx-field-label">Icon only</div>
+            <div class="dx-field-value">
+                <dx-button icon="plus" (onClick)="addOders()">
+                </dx-button>      
+            </div>
+        </div>
+    </div>
+    <!-- <h2>Заказы</h2> -->
+    <div class="table">
+        <dx-data-grid
+            id="gridContainer"
+            [dataSource]="Orders"
+            [columns]="['client','date','summa','status','type','dateOtg','menedger']"
+            [showBorders]="true"
+            [focusedRowEnabled]="true"
+            [columnAutoWidth]="true"
+            (onRowClick)="clickRow($event)"
+        >
+            <dxo-paging [pageSize]="10"></dxo-paging>
+            <dxo-pager 
+                [showPageSizeSelector]="true"
+                [allowedPageSizes]="[5, 10, 20]"
+                [showInfo]="true">
+            </dxo-pager>
+            <dxi-column dataField="client" caption="Клиент"></dxi-column>
+            <dxi-column dataField="date" caption="Дата заказа" dataType="date"></dxi-column>
+            <dxi-column dataField="summa" caption="Сумма"></dxi-column>
+            <dxi-column dataField="status" caption="Статус"></dxi-column>
+            <dxi-column dataField="type" caption="Тип отгрузки"></dxi-column>
+            <dxi-column dataField="dateOtg" caption="Дата отгрузки" dataType="date"></dxi-column>
+            <dxi-column dataField="menedger" caption="Менеджер"></dxi-column>
+            
+        </dx-data-grid>
+        
+
+    </div>
+    <dx-popup
+            class="popup"
+            [width]="300"
+            [height]="250"
+            [showTitle]="true"
+            title="Information"
+            [dragEnabled]="false"
+            [closeOnOutsideClick]="true"
+            [(visible)]="popupModal">
+            <!-- <div *dxTemplate="let data of 'content'"> не въезжаю -->
+            <div>
+                <p>
+                    Client Name:
+                    <span>{{order.client}}</span>
+                </p>
+                <p>
+                    Date:
+                    <span>{{order.data}}</span>
+                </p>
+                <p>
+                    Address:
+                    <span>{{order.address}}</span>
+                </p>
+            </div>
+            <dx-button text="Изменить" (onClick)="clickButton(order)">                 
+            </dx-button>
+        </dx-popup>
+    <dx-popup
+        class="popup"
+        [width]="300"
+        [height]="250"
+        [showTitle]="true"
+        title="Information"
+        [dragEnabled]="false"
+        [closeOnOutsideClick]="true"
+        [(visible)]="popupUpdate">
+        
+        <div>
+            <div class="form">
+            <div class="dx-field">
+                <div class="dx-field-label">Name</div>
+                <div class="dx-field-value">
+                    <dx-text-box [(value)]="order.client"></dx-text-box>
+                </div>
+            </div>
+            </div>
+            <div class="dx-field">
+                <div class="dx-field-label">With placeholder</div>
+                <div class="dx-field-value">
+                    <dx-text-box [(value)]="order.client"></dx-text-box>
+                </div>
+            </div>
+            
+        </div>
+        <dx-button text="Применить" (onClick)="clickUpdata(order)">                 
+        </dx-button>
+    </dx-popup>
+</div>

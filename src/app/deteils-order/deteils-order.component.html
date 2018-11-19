@@ -1,0 +1,97 @@
+<form id="form-container" (submit)="onFormSubmit($event)">
+  <dx-form id="form"
+      [formData]="order"
+      [readOnly]="false"
+      [showColonAfterLabel]="true"
+      [showValidationSummary]="true"
+      validationGroup="customerData"
+      [colCount]="2">
+      <dxi-item itemType="group">
+        <dxi-item itemType="group" caption="Заказы">
+            <dxi-item dataField="id" [editorOptions]="{ disabled: true }">
+              <dxo-label text="ID заказа"></dxo-label>
+            </dxi-item>
+            <dxi-item dataField="date" editorType="dxDateBox">
+              <dxo-label text="Дата отправки"></dxo-label>
+              <dxi-validation-rule 
+                    type="required"
+                    message="Дата не заполнена">
+                </dxi-validation-rule>
+            </dxi-item>
+            <dxi-item dataField="status">
+              <dxo-label text="Статус"></dxo-label>
+              <dxi-validation-rule 
+                    type="required"
+                    message="Статус не заполнен!!!">
+                </dxi-validation-rule>
+            </dxi-item>
+            
+        </dxi-item>
+        <dxi-item itemType = "group" caption = "Отгрузка и доставка">
+          <dxi-item dataField="dateOtg" editorType="dxDateBox">
+          <dxo-label text="Дата отправки"></dxo-label>
+          <dxi-validation-rule 
+                    type="required"
+                    message="Дата отправки не заполнена!!">
+                </dxi-validation-rule>
+        </dxi-item>
+        </dxi-item>
+      </dxi-item>
+      <dxi-item itemType="group">
+        <dxi-item itemType="group" caption="Диллер">
+            <dxi-item dataField="Organizacia">
+              <dxo-label text="Организация"></dxo-label>
+              <dxi-validation-rule 
+                    type="required"
+                    message="Организация не заполнена!!">
+                </dxi-validation-rule>
+            </dxi-item>
+            <dxi-item dataField="Region">
+              <dxo-label text="Регион"></dxo-label>
+              <dxi-validation-rule 
+                    type="required"
+                    message="Регион не заполнен!!">
+                </dxi-validation-rule>
+            </dxi-item>
+            <dxi-item dataField="Montajnik">
+              <dxo-label text="Монтажник"></dxo-label>
+              <dxi-validation-rule 
+                    type="required"
+                    message="Монтажник не заполнен!!">
+                </dxi-validation-rule>              
+            </dxi-item>
+              <dxi-item itemType="group" caption="Контактная информация">
+                <dxi-item itemType="tabbed" [tabPanelOptions]="{ deferRendering: false }">
+                    <dxi-tab title="Phone">
+                      <dxi-item dataField="Phone">
+                        <dxi-validation-rule 
+                            type="required"
+                            message="Телефон не заполнен!!">
+                        </dxi-validation-rule>  
+                      </dxi-item>  
+                    </dxi-tab>
+                    <dxi-tab title="Skype">
+                      <dxi-item dataField="Skype"></dxi-item>
+                    </dxi-tab>
+                    <dxi-tab title="Email">
+                      <dxi-item dataField="Email">
+                          <dxi-validation-rule 
+                            type="email"
+                            message="Email is invalid">
+                          </dxi-validation-rule>
+                      </dxi-item>
+                    </dxi-tab>
+                </dxi-item>
+            </dxi-item>          
+        </dxi-item>
+      </dxi-item>
+      
+      
+      
+  </dx-form>
+  <div class="dx-field">
+            <dx-button  type="success" text="OK" class="" [useSubmitBehavior]="true"></dx-button>
+            <dx-button  type="danger" text="CLOSE" ></dx-button>
+
+</div>
+</form>
