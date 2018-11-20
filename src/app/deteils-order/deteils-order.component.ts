@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import {  ActivatedRoute } from '@angular/router';
+import {  ActivatedRoute, Router } from '@angular/router';
 import { OrderService } from '../service/order.service';
 import { Order } from '../Order';
 import { DxFormComponent } from 'devextreme-angular/ui/form';
@@ -16,9 +16,12 @@ export class DeteilsOrderComponent implements OnInit {
   newOreder: boolean;
   order: Order;
   constructor(
+    private router: Router,
     private route: ActivatedRoute,
     private orderService: OrderService,
-  ) { }
+  ) { 
+    this.order=new Order();
+  }
 
   ngOnInit() {
     this.getOrder();
@@ -27,12 +30,34 @@ export class DeteilsOrderComponent implements OnInit {
   getOrder(): void {
 
     this.newOreder = !!this.route.snapshot.paramMap.get('id'); 
-    console.log(this.route.snapshot.paramMap.get('id'));
     if (this.newOreder)
     this.orderService.getOrder(this.route.snapshot.paramMap.get('id'))
-      .subscribe(order => this.order = order);
+      .subscribe(order => {
+        this.order = order;
+        console.log(this.order);
+      });
   }
   onFormSubmit(e){
-    e.preventDefault();
+    console.log(this.order);
+    if (!this.newOreder){
+      this.orderService.seveOrder(this.order).subscribe(response=>{        
+        this.router.navigate(['/']);
+      },error=>{}
+      )
+    }
+    else{
+      this.orderService.update(this.order).
+      subscribe(response=>{        
+        this.router.navigate(['/']);
+      },error=>{}
+      )
+    }
+  
+  e.preventDefault();
+  }
+  onDelete(){
+    this.orderService.delete(this.order).subscribe(response=>{
+      this.router.navigate(['/']);
+    })
   }
 }

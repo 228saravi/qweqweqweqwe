@@ -9,6 +9,10 @@ export class Order{
     type: string;
     dateOtg:Date;
     menedger: string;
+    organiz: string;
+    region: string;
+    montajnic:string;
+    phone: string;
     constructor ( ){
         this.id=0;
         this.client='';
@@ -18,5 +22,9 @@ export class Order{
         this.type= '';
         this.dateOtg=new Date();
         this.menedger= '';
+        this.organiz='';
+        this.region='';
+        this.montajnic='';
+        this.phone='';
     }
 }

@@ -15,37 +15,8 @@ class Product {
     id: "1",
     name: "Заказы",
     
-  }, {
-    id: "2",
-    name: "Каталог",
-    items: [{
-        id: "2_1",
-        name: "SuperLCD 42",
-        iconSrc: "images/products/7.png",
-        price: 1200
-    }, {
-        id: "2_2",
-        name: "SuperLED 42",
-        iconSrc: "images/products/5.png",
-        price: 1450
-    }, {
-        id: "2_3",
-        name: "SuperLED 50",
-        iconSrc: "images/products/4.png",
-        price: 1600
-    }, {
-        id: "2_4",
-        name: "SuperLCD 55 (Not available)",
-        iconSrc: "images/products/6.png",
-        price: 1350,
-        disabled: true
-    }, {
-        id: "2_5",
-        name: "SuperLCD 70",
-        iconSrc: "images/products/9.png",
-        price: 4000
-    }]
-  }];
+  }
+   ];
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',

@@ -25,8 +25,14 @@ export class OrderService {
     return this._http.get<Order>(this.baseurl+"orders/"+id);
   }
   // creat
-  seveOrder(id: number,order:Order) {
-    // TODO: send the message _after_ fetching the hero
-  
+  seveOrder(order:Order): Observable<Order> {
+    return this._http.post<Order>(this.baseurl+"orders/",order);
+
+  }
+  update(order:Order): Observable<Order>{
+    return this._http.put<Order>(this.baseurl+"orders/"+order.id,order)
+  }
+  delete(order:Order): Observable<Order>{
+    return this._http.delete<Order>(this.baseurl+"orders/"+order.id)
   }
 }
